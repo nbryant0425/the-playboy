@@ -8,6 +8,15 @@ export async function SiteHeader() {
     data: { user },
   } = await supabase.auth.getUser();
 
+  let pendingCorrectionsCount = 0;
+  if (user) {
+    const { count } = await supabase
+      .from("issue_corrections")
+      .select("id", { count: "exact", head: true })
+      .eq("status", "pending");
+    pendingCorrectionsCount = count ?? 0;
+  }
+
   return (
     <header>
       <Link href="/" className="block bg-ink px-4 py-8 text-center sm:py-12">
@@ -25,6 +34,19 @@ export async function SiteHeader() {
           {user && (
             <Link href="/tags" className="text-sm font-medium text-ink-soft underline underline-offset-2 hover:text-ink">
               My Folders
+            </Link>
+          )}
+          {user && (
+            <Link
+              href="/corrections"
+              className="text-sm font-medium text-ink-soft underline underline-offset-2 hover:text-ink"
+            >
+              Corrections
+              {pendingCorrectionsCount > 0 && (
+                <span className="ml-1.5 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-red px-1.5 text-xs font-semibold text-paper-card no-underline">
+                  {pendingCorrectionsCount}
+                </span>
+              )}
             </Link>
           )}
         </div>
