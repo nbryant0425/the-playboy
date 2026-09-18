@@ -13,7 +13,7 @@ export function MonthView({
   photoPendingIds,
 }: {
   groups: MonthGroup[];
-  onToggleOwned: (issue: IssueWithCollection) => void;
+  onToggleOwned?: (issue: IssueWithCollection) => void;
   onAddPhoto?: (issue: IssueWithCollection, file: File) => void;
   pendingIds: Set<string>;
   photoPendingIds?: Set<string>;

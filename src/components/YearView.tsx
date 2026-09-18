@@ -15,7 +15,7 @@ export function YearView({
   defaultExpandedYear,
 }: {
   groups: YearGroup[];
-  onToggleOwned: (issue: IssueWithCollection) => void;
+  onToggleOwned?: (issue: IssueWithCollection) => void;
   onAddPhoto?: (issue: IssueWithCollection, file: File) => void;
   pendingIds: Set<string>;
   photoPendingIds?: Set<string>;

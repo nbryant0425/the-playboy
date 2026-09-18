@@ -19,7 +19,7 @@ export function IssueCard({
   photoPending,
 }: {
   issue: IssueWithCollection;
-  onToggleOwned: (issue: IssueWithCollection) => void;
+  onToggleOwned?: (issue: IssueWithCollection) => void;
   onAddPhoto?: (issue: IssueWithCollection, file: File) => void;
   pending?: boolean;
   photoPending?: boolean;
@@ -47,37 +47,50 @@ export function IssueCard({
             <PlaceholderCover flag={flag} />
           )}
 
-          <button
-            type="button"
-            disabled={pending}
-            onClick={(e) => {
-              e.preventDefault();
-              onToggleOwned(issue);
-            }}
-            aria-pressed={owned}
-            aria-label={owned ? "Mark as not owned" : "Mark as owned"}
-            className="absolute right-1.5 top-1.5 flex h-7 w-7 items-center justify-center rounded-full border-2 border-paper-card/80 bg-ink/40 backdrop-blur-sm transition hover:border-red disabled:opacity-50"
-          >
-            <AnimatePresence initial={false}>
-              {owned && (
-                <motion.svg
-                  initial={{ scale: 0.3, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  exit={{ scale: 0.3, opacity: 0 }}
-                  transition={{ type: "spring", stiffness: 500, damping: 20 }}
-                  viewBox="0 0 24 24"
-                  className="h-4 w-4 text-paper-card"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={3.5}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
+          {onToggleOwned ? (
+            <button
+              type="button"
+              disabled={pending}
+              onClick={(e) => {
+                e.preventDefault();
+                onToggleOwned(issue);
+              }}
+              aria-pressed={owned}
+              aria-label={owned ? "Mark as not owned" : "Mark as owned"}
+              className="absolute right-1.5 top-1.5 flex h-7 w-7 items-center justify-center rounded-full border-2 border-paper-card/80 bg-ink/40 backdrop-blur-sm transition hover:border-red disabled:opacity-50"
+            >
+              <AnimatePresence initial={false}>
+                {owned && (
+                  <motion.svg
+                    initial={{ scale: 0.3, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0.3, opacity: 0 }}
+                    transition={{ type: "spring", stiffness: 500, damping: 20 }}
+                    viewBox="0 0 24 24"
+                    className="h-4 w-4 text-paper-card"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={3.5}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M5 13l4 4L19 7" />
+                  </motion.svg>
+                )}
+              </AnimatePresence>
+            </button>
+          ) : (
+            owned && (
+              <div
+                aria-label="Owned"
+                className="absolute right-1.5 top-1.5 flex h-7 w-7 items-center justify-center rounded-full border-2 border-paper-card/80 bg-ink/40 backdrop-blur-sm"
+              >
+                <svg viewBox="0 0 24 24" className="h-4 w-4 text-paper-card" fill="none" stroke="currentColor" strokeWidth={3.5} strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 13l4 4L19 7" />
-                </motion.svg>
-              )}
-            </AnimatePresence>
-          </button>
+                </svg>
+              </div>
+            )
+          )}
 
           {owned && !photoUrl && (
             <div

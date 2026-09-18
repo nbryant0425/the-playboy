@@ -14,7 +14,18 @@ import { ProgressBar } from "./ProgressBar";
 import { FilterTabs } from "./FilterTabs";
 import { SearchBar } from "./SearchBar";
 
-export function HomeShell({ initialIssues, userId }: { initialIssues: IssueWithCollection[]; userId: string | null }) {
+export function HomeShell({
+  initialIssues,
+  userId,
+  readOnly = false,
+  heading,
+}: {
+  initialIssues: IssueWithCollection[];
+  userId: string | null;
+  /** When true, owned/photo controls are disabled — used for viewing a friend's collection. */
+  readOnly?: boolean;
+  heading?: React.ReactNode;
+}) {
   const [issues, setIssues] = useState(initialIssues);
   const [mode, setMode] = useState<ViewMode>("year");
   const [filter, setFilter] = useState<OwnershipFilter>("all");
@@ -32,6 +43,7 @@ export function HomeShell({ initialIssues, userId }: { initialIssues: IssueWithC
   const mostRecentYear = yearGroups.at(-1)?.year;
 
   async function handleToggle(issue: IssueWithCollection) {
+    if (readOnly) return;
     if (!userId) {
       setSignInHint(true);
       window.setTimeout(() => setSignInHint(false), 3000);
@@ -66,6 +78,7 @@ export function HomeShell({ initialIssues, userId }: { initialIssues: IssueWithC
   }
 
   async function handleAddPhoto(issue: IssueWithCollection, file: File) {
+    if (readOnly) return;
     if (!userId) {
       setSignInHint(true);
       window.setTimeout(() => setSignInHint(false), 3000);
@@ -96,6 +109,7 @@ export function HomeShell({ initialIssues, userId }: { initialIssues: IssueWithC
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-6 sm:px-6">
+      {heading}
       <div className="mb-6 space-y-4">
         <SearchBar index={searchIndex} />
         <ProgressBar owned={totalOwned} total={issues.length} />
@@ -115,8 +129,8 @@ export function HomeShell({ initialIssues, userId }: { initialIssues: IssueWithC
         yearView={
           <YearView
             groups={yearGroups}
-            onToggleOwned={handleToggle}
-            onAddPhoto={handleAddPhoto}
+            onToggleOwned={readOnly ? undefined : handleToggle}
+            onAddPhoto={readOnly ? undefined : handleAddPhoto}
             pendingIds={pendingIds}
             photoPendingIds={photoPendingIds}
             defaultExpandedYear={mostRecentYear}
@@ -125,8 +139,8 @@ export function HomeShell({ initialIssues, userId }: { initialIssues: IssueWithC
         monthView={
           <MonthView
             groups={monthGroups}
-            onToggleOwned={handleToggle}
-            onAddPhoto={handleAddPhoto}
+            onToggleOwned={readOnly ? undefined : handleToggle}
+            onAddPhoto={readOnly ? undefined : handleAddPhoto}
             pendingIds={pendingIds}
             photoPendingIds={photoPendingIds}
           />

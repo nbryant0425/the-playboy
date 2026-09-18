@@ -9,12 +9,20 @@ export async function SiteHeader() {
   } = await supabase.auth.getUser();
 
   let pendingCorrectionsCount = 0;
+  let incomingFriendRequestCount = 0;
   if (user) {
     const { count } = await supabase
       .from("issue_corrections")
       .select("id", { count: "exact", head: true })
       .eq("status", "pending");
     pendingCorrectionsCount = count ?? 0;
+
+    const { count: friendReqCount } = await supabase
+      .from("friendships")
+      .select("id", { count: "exact", head: true })
+      .eq("status", "pending")
+      .eq("addressee_id", user.id);
+    incomingFriendRequestCount = friendReqCount ?? 0;
   }
 
   return (
@@ -45,6 +53,16 @@ export async function SiteHeader() {
               {pendingCorrectionsCount > 0 && (
                 <span className="ml-1.5 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-red px-1.5 text-xs font-semibold text-paper-card no-underline">
                   {pendingCorrectionsCount}
+                </span>
+              )}
+            </Link>
+          )}
+          {user && (
+            <Link href="/friends" className="text-sm font-medium text-ink-soft underline underline-offset-2 hover:text-ink">
+              Friends
+              {incomingFriendRequestCount > 0 && (
+                <span className="ml-1.5 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-red px-1.5 text-xs font-semibold text-paper-card no-underline">
+                  {incomingFriendRequestCount}
                 </span>
               )}
             </Link>

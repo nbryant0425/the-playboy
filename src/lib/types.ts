@@ -73,6 +73,15 @@ export interface IssueCorrection {
   reviewed_by: string | null;
 }
 
+export interface Friendship {
+  id: string;
+  requester_id: string;
+  addressee_id: string;
+  status: "pending" | "accepted";
+  created_at: string;
+  responded_at: string | null;
+}
+
 export const MONTH_ORDER = [
   "January",
   "February",
