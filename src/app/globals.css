@@ -1,26 +1,150 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-paper: #f3e9d7;
+  --color-paper-card: #faf4e6;
+  --color-paper-card-alt: #ece0c6;
+  --color-ink: #221e1b;
+  --color-ink-soft: #5c5348;
+  --color-ink-faint: #8a8072;
+  --color-red: #9e2b25;
+  --color-red-dark: #7a201b;
+  --color-red-soft: #c65950;
+  --color-gold: #c7a046;
+  --color-gold-dark: #a17f34;
+  --color-blossom: #df8fac;
+  --color-blossom-dark: #b95c80;
+  --color-line: rgba(34, 30, 27, 0.14);
+  --color-line-strong: rgba(34, 30, 27, 0.28);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-paper: var(--color-paper);
+  --color-paper-card: var(--color-paper-card);
+  --color-paper-card-alt: var(--color-paper-card-alt);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-ink-faint: var(--color-ink-faint);
+  --color-red: var(--color-red);
+  --color-red-dark: var(--color-red-dark);
+  --color-red-soft: var(--color-red-soft);
+  --color-gold: var(--color-gold);
+  --color-gold-dark: var(--color-gold-dark);
+  --color-blossom: var(--color-blossom);
+  --color-blossom-dark: var(--color-blossom-dark);
+  --color-line: var(--color-line);
+  --color-line-strong: var(--color-line-strong);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-masthead: var(--font-masthead);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #15110f;
+  color: var(--color-ink);
+  font-family: var(--font-body), Georgia, serif;
+  position: relative;
+}
+
+/* Outer picture-frame border: black with a scattered pink-blossom pattern,
+   evoking a magazine cover border without reproducing any actual Playboy
+   artwork — this is an original floral tile (public/floral-border.svg). */
+.magazine-frame {
+  background: #15110f url("/floral-border.svg") repeat;
+  background-size: 72px 72px;
+  padding: 16px;
+}
+@media (min-width: 640px) {
+  .magazine-frame {
+    padding: 30px;
+    background-size: 100px 100px;
+  }
+}
+
+.magazine-page {
+  background-color: var(--color-paper);
+  position: relative;
+  min-height: calc(100vh - 20px);
+}
+@media (min-width: 640px) {
+  .magazine-page {
+    min-height: calc(100vh - 36px);
+  }
+}
+
+/* Subtle paper-grain texture: fixed so it doesn't scroll with content, low
+   opacity so it stays print-flavored without hurting legibility. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 0.13  0 0 0 0 0.12  0 0 0 0 0.11  0 0 0 0.05 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 160px 160px;
+}
+
+/* Faint halftone dot field, used behind hero/masthead areas via .texture-halftone */
+.texture-halftone {
+  background-image: radial-gradient(var(--color-ink) 0.6px, transparent 0.6px);
+  background-size: 6px 6px;
+  opacity: 0.06;
+}
+
+/* Same dot field, but as a placeholder "phantom cover" background — an
+   issue we don't have a photo for yet — so it reads as a card, not a bug. */
+.texture-halftone-cover {
+  background-image: radial-gradient(var(--color-ink) 0.5px, transparent 0.5px);
+  background-size: 5px 5px;
+  background-color: var(--color-paper-card-alt);
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+  font-optical-sizing: auto;
+}
+
+.card-shadow {
+  box-shadow:
+    0 1px 0 rgba(34, 30, 27, 0.06),
+    0 6px 16px -8px rgba(34, 30, 27, 0.35);
+}
+
+/* "COLLECTED" ink-stamp mark for owned issues */
+.collected-stamp {
+  font-family: var(--font-display), Georgia, serif;
+  color: var(--color-red);
+  border: 2.5px solid var(--color-red);
+  border-radius: 4px;
+  transform: rotate(-8deg);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  mix-blend-mode: multiply;
+  opacity: 0.92;
+}
+
+@keyframes stamp-in {
+  0% {
+    opacity: 0;
+    transform: rotate(-8deg) scale(2.2);
+  }
+  60% {
+    opacity: 0.95;
+    transform: rotate(-8deg) scale(0.92);
+  }
+  100% {
+    opacity: 0.92;
+    transform: rotate(-8deg) scale(1);
+  }
+}
+
+.collected-stamp-animate {
+  animation: stamp-in 0.32s cubic-bezier(0.2, 0.8, 0.3, 1.1);
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-ink);
 }

@@ -1,0 +1,46 @@
+import Link from "next/link";
+import { createClient } from "@/lib/supabase/server";
+import { SignOutButton, SignInButtons } from "./AuthButtons";
+
+export async function SiteHeader() {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  return (
+    <header>
+      <Link href="/" className="block bg-ink px-4 py-8 text-center sm:py-12">
+        <span className="font-masthead block text-7xl uppercase leading-none tracking-tight text-paper-card sm:text-9xl lg:text-[10rem]">
+          Playboy
+        </span>
+        <span className="mt-3 inline-block text-xs font-semibold uppercase tracking-[0.5em] text-blossom sm:text-base sm:tracking-[0.6em]">
+          Collection Tracker
+        </span>
+      </Link>
+
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line bg-paper-card/70 px-4 py-3 backdrop-blur sm:px-6">
+        <div className="flex items-center gap-4">
+          <span className="text-xs uppercase tracking-[0.2em] text-ink-faint">Dec 1953&ndash;Present</span>
+          {user && (
+            <Link href="/tags" className="text-sm font-medium text-ink-soft underline underline-offset-2 hover:text-ink">
+              My Folders
+            </Link>
+          )}
+        </div>
+
+        <div className="flex items-center gap-3">
+          {user && (
+            <Link
+              href="/add"
+              className="rounded-full bg-red px-4 py-2 text-sm font-semibold text-paper-card transition hover:bg-red-dark"
+            >
+              + Add Magazine
+            </Link>
+          )}
+          {user ? <SignOutButton email={user.email ?? "Signed in"} /> : <SignInButtons />}
+        </div>
+      </div>
+    </header>
+  );
+}
