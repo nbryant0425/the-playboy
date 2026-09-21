@@ -37,7 +37,7 @@ export function IssueCard({
           {photoUrl ? (
             <Image
               src={photoUrl}
-              alt={`Your copy of ${issue.display_label}`}
+              alt={`Photo of ${issue.display_label}`}
               fill
               sizes="(max-width: 640px) 45vw, (max-width: 1024px) 25vw, 220px"
               className="object-cover"

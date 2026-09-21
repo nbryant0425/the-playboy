@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect, notFound } from "next/navigation";
 import { createClient, createServiceRoleClient } from "@/lib/supabase/server";
 import { mergeIssuesWithCollection } from "@/lib/data";
+import { getSignedPhotoUrls } from "@/lib/collection";
 import { HomeShell } from "@/components/HomeShell";
 import { SiteHeader } from "@/components/SiteHeader";
 import type { Issue } from "@/lib/types";
@@ -40,9 +41,10 @@ export default async function FriendCollectionPage({ params }: { params: Promise
     .select("issue_id, owned, photo_url, condition_notes")
     .eq("user_id", friendId);
 
-  // Friends' photos stay private (the storage bucket policy never grants
-  // cross-user access) — collection state only, no signed photo URLs here.
-  const merged = mergeIssuesWithCollection(issues, collectionRows ?? []);
+  const paths = (collectionRows ?? []).map((r) => r.photo_url).filter((p): p is string => !!p);
+  const signedPhotoUrls = await getSignedPhotoUrls(supabase, paths);
+
+  const merged = mergeIssuesWithCollection(issues, collectionRows ?? [], signedPhotoUrls);
 
   return (
     <>
