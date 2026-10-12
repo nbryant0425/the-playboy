@@ -17,7 +17,13 @@ export function IssueCard({
   onAddPhoto,
   pending,
   photoPending,
+  href,
+  caption,
 }: {
+  /** Overrides the default link to the issue page (e.g. to jump to its highlights). */
+  href?: string;
+  /** Extra line under the issue info, e.g. a highlight count. */
+  caption?: React.ReactNode;
   issue: IssueWithCollection;
   onToggleOwned?: (issue: IssueWithCollection) => void;
   onAddPhoto?: (issue: IssueWithCollection, file: File) => void;
@@ -32,7 +38,7 @@ export function IssueCard({
 
   return (
     <div className="group rounded-lg border border-line bg-paper-card p-2.5 card-shadow transition hover:-translate-y-0.5 hover:shadow-lg sm:p-3">
-      <Link href={`/issue/${issue.id}`} className="block">
+      <Link href={href ?? `/issue/${issue.id}`} className="block">
         <div className="relative aspect-[2/3] w-full overflow-hidden rounded-sm bg-paper-card-alt">
           {photoUrl ? (
             <Image
@@ -133,6 +139,7 @@ export function IssueCard({
           ) : (
             <p className="mt-0.5 text-[13px] italic leading-tight text-ink-faint">Unknown</p>
           )}
+          {caption}
         </div>
       </Link>
 

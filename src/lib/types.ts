@@ -73,6 +73,20 @@ export interface IssueCorrection {
   reviewed_by: string | null;
 }
 
+export interface Highlight {
+  id: string;
+  user_id: string;
+  issue_id: string;
+  photo_url: string | null;
+  description: string | null;
+  created_at: string;
+}
+
+/** A highlight plus a temporary signed URL for its photo (the bucket is private). */
+export interface HighlightWithUrl extends Highlight {
+  photo_signed_url: string | null;
+}
+
 export interface Friendship {
   id: string;
   requester_id: string;

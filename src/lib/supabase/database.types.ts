@@ -93,6 +93,22 @@ export interface Database {
         Update: Partial<Database["public"]["Tables"]["issue_tags"]["Row"]>;
         Relationships: [];
       };
+      highlights: {
+        Row: {
+          id: string;
+          user_id: string;
+          issue_id: string;
+          photo_url: string | null;
+          description: string | null;
+          created_at: string;
+        };
+        Insert: Partial<Database["public"]["Tables"]["highlights"]["Row"]> & {
+          user_id: string;
+          issue_id: string;
+        };
+        Update: Partial<Database["public"]["Tables"]["highlights"]["Row"]>;
+        Relationships: [];
+      };
       friendships: {
         Row: {
           id: string;

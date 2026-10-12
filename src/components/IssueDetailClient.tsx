@@ -4,7 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import { createClient } from "@/lib/supabase/client";
 import { setOwned, attachPhotoAndMarkOwned, getSignedPhotoUrl } from "@/lib/collection";
-import type { Issue, IssueCorrection, UserCollectionRow, Tag } from "@/lib/types";
+import type { Issue, IssueCorrection, UserCollectionRow, Tag, HighlightWithUrl } from "@/lib/types";
+import { HighlightsSection } from "./HighlightsSection";
 import { SynopsisBlock } from "./SynopsisBlock";
 import { CorrectionForm } from "./CorrectionForm";
 import { PendingCorrections } from "./PendingCorrections";
@@ -25,6 +26,7 @@ export function IssueDetailClient({
   pendingCorrections,
   allTags,
   initialIssueTagIds,
+  highlights,
 }: {
   issue: Issue;
   collection: UserCollectionRow | null;
@@ -33,6 +35,7 @@ export function IssueDetailClient({
   pendingCorrections: IssueCorrection[];
   allTags: Tag[];
   initialIssueTagIds: string[];
+  highlights: HighlightWithUrl[];
 }) {
   const supabase = createClient();
   const [owned, setOwnedState] = useState(!!collection?.owned);
@@ -159,6 +162,8 @@ export function IssueDetailClient({
         <h2 className="font-display text-lg font-semibold">About this issue</h2>
         <SynopsisBlock issueId={issue.id} initialSynopsis={issue.synopsis} signedIn={!!userId} />
       </div>
+
+      {userId && <HighlightsSection issueId={issue.id} userId={userId} initialHighlights={highlights} />}
 
       {userId && (
         <div className="mt-8 border-t border-line pt-6">

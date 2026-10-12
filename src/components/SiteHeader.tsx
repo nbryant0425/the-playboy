@@ -45,6 +45,11 @@ export async function SiteHeader() {
             </Link>
           )}
           {user && (
+            <Link href="/highlights" className="text-sm font-medium text-ink-soft underline underline-offset-2 hover:text-ink">
+              Highlights
+            </Link>
+          )}
+          {user && (
             <Link
               href="/corrections"
               className="text-sm font-medium text-ink-soft underline underline-offset-2 hover:text-ink"

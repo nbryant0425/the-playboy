@@ -3,7 +3,8 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { SiteHeader } from "@/components/SiteHeader";
 import { IssueDetailClient } from "@/components/IssueDetailClient";
-import type { Issue, IssueCorrection, UserCollectionRow, Tag } from "@/lib/types";
+import { getSignedPhotoUrls } from "@/lib/collection";
+import type { Issue, IssueCorrection, UserCollectionRow, Tag, HighlightWithUrl } from "@/lib/types";
 
 export default async function IssueDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -39,6 +40,7 @@ export default async function IssueDetailPage({ params }: { params: Promise<{ id
   let pendingCorrections: IssueCorrection[] = [];
   let allTags: Tag[] = [];
   let issueTagIds: string[] = [];
+  let highlights: HighlightWithUrl[] = [];
   if (user) {
     const { data } = await supabase
       .from("issue_corrections")
@@ -61,6 +63,20 @@ export default async function IssueDetailPage({ params }: { params: Promise<{ id
       .eq("user_id", user.id)
       .eq("issue_id", id);
     issueTagIds = (issueTagsData ?? []).map((r) => r.tag_id);
+
+    const { data: highlightRows } = await supabase
+      .from("highlights")
+      .select("*")
+      .eq("user_id", user.id)
+      .eq("issue_id", id)
+      .order("created_at", { ascending: true });
+
+    const photoPaths = (highlightRows ?? []).map((h) => h.photo_url).filter((p): p is string => !!p);
+    const signedUrls = await getSignedPhotoUrls(supabase, photoPaths);
+    highlights = (highlightRows ?? []).map((h) => ({
+      ...h,
+      photo_signed_url: h.photo_url ? (signedUrls.get(h.photo_url) ?? null) : null,
+    }));
   }
 
   return (
@@ -79,6 +95,7 @@ export default async function IssueDetailPage({ params }: { params: Promise<{ id
           pendingCorrections={pendingCorrections}
           allTags={allTags}
           initialIssueTagIds={issueTagIds}
+          highlights={highlights}
         />
       </main>
     </>
