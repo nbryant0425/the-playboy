@@ -100,6 +100,7 @@ export interface Database {
           issue_id: string;
           photo_url: string | null;
           description: string | null;
+          page_number: number | null;
           created_at: string;
         };
         Insert: Partial<Database["public"]["Tables"]["highlights"]["Row"]> & {

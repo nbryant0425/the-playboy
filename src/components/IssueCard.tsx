@@ -161,7 +161,7 @@ export function IssueCard({
   );
 }
 
-function PlaceholderCover({ flag }: { flag: string | undefined }) {
+export function PlaceholderCover({ flag }: { flag?: string }) {
   return (
     <div className="texture-halftone-cover flex h-full w-full flex-col items-center justify-center gap-2">
       <div className="h-8 w-px bg-red/40 sm:h-12" />

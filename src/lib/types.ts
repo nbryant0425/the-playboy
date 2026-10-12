@@ -79,6 +79,8 @@ export interface Highlight {
   issue_id: string;
   photo_url: string | null;
   description: string | null;
+  /** The page of the physical magazine this highlight is from, if the user entered one. */
+  page_number: number | null;
   created_at: string;
 }
 

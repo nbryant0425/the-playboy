@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import { SiteHeader } from "@/components/SiteHeader";
 import { IssueDetailClient } from "@/components/IssueDetailClient";
 import { getSignedPhotoUrls } from "@/lib/collection";
+import { sortHighlights } from "@/lib/highlights";
 import type { Issue, IssueCorrection, UserCollectionRow, Tag, HighlightWithUrl } from "@/lib/types";
 
 export default async function IssueDetailPage({ params }: { params: Promise<{ id: string }> }) {
@@ -73,10 +74,12 @@ export default async function IssueDetailPage({ params }: { params: Promise<{ id
 
     const photoPaths = (highlightRows ?? []).map((h) => h.photo_url).filter((p): p is string => !!p);
     const signedUrls = await getSignedPhotoUrls(supabase, photoPaths);
-    highlights = (highlightRows ?? []).map((h) => ({
-      ...h,
-      photo_signed_url: h.photo_url ? (signedUrls.get(h.photo_url) ?? null) : null,
-    }));
+    highlights = sortHighlights(
+      (highlightRows ?? []).map((h) => ({
+        ...h,
+        photo_signed_url: h.photo_url ? (signedUrls.get(h.photo_url) ?? null) : null,
+      }))
+    );
   }
 
   return (

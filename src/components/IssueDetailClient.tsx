@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { createClient } from "@/lib/supabase/client";
+import { sortHighlights } from "@/lib/highlights";
 import { setOwned, attachPhotoAndMarkOwned, getSignedPhotoUrl } from "@/lib/collection";
 import type { Issue, IssueCorrection, UserCollectionRow, Tag, HighlightWithUrl } from "@/lib/types";
 import { HighlightsSection } from "./HighlightsSection";
+import { IssueBook } from "./IssueBook";
 import { SynopsisBlock } from "./SynopsisBlock";
 import { CorrectionForm } from "./CorrectionForm";
 import { PendingCorrections } from "./PendingCorrections";
@@ -42,6 +43,7 @@ export function IssueDetailClient({
   const [photoUrl, setPhotoUrl] = useState(signedPhotoUrl);
   const [busy, setBusy] = useState(false);
   const [corrections, setCorrections] = useState(pendingCorrections);
+  const [highlightList, setHighlightList] = useState(() => sortHighlights(highlights));
   const confidence = CONFIDENCE_COPY[issue.source_confidence];
 
   async function toggleOwned() {
@@ -139,11 +141,7 @@ export function IssueDetailClient({
         )}
       </div>
 
-      {photoUrl && (
-        <div className="relative mt-6 aspect-[3/4] w-full max-w-xs overflow-hidden rounded-lg border border-line card-shadow">
-          <Image src={photoUrl} alt={`Your copy of ${issue.display_label}`} fill className="object-cover" unoptimized />
-        </div>
-      )}
+      <IssueBook coverUrl={photoUrl} displayLabel={issue.display_label} highlights={highlightList} />
 
       {userId && (
         <div className="mt-8 border-t border-line pt-6">
@@ -163,7 +161,14 @@ export function IssueDetailClient({
         <SynopsisBlock issueId={issue.id} initialSynopsis={issue.synopsis} signedIn={!!userId} />
       </div>
 
-      {userId && <HighlightsSection issueId={issue.id} userId={userId} initialHighlights={highlights} />}
+      {userId && (
+        <HighlightsSection
+          issueId={issue.id}
+          userId={userId}
+          highlights={highlightList}
+          setHighlights={setHighlightList}
+        />
+      )}
 
       {userId && (
         <div className="mt-8 border-t border-line pt-6">
