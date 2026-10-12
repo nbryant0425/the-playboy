@@ -74,9 +74,8 @@ const cells = rows
     <div class="label">${display_label}</div>
     <img src="https://cdn.centerfold.com/magazine/covers/${year}/${mm}/medium.jpg" loading="eager" onerror="this.parentElement.classList.add('missing')" />
     <div class="data">
-      <div><span>cover_model:</span> ${cover_model || "<em>none</em>"}</div>
+      <div><span>COVER:</span> <b>${cover_model || "<em>none</em>"}</b></div>
       <div><span>playmate:</span> ${playmate_name || "<em>none</em>"}</div>
-      <div><span>interview:</span> ${interview_subject || "<em>none</em>"}</div>
     </div>
   </div>`;
   })
@@ -91,7 +90,7 @@ const html = `<!doctype html>
   .cell.missing { opacity: 0.25; }
   .label { color: #fff; font-size: 13px; font-weight: bold; padding: 4px 6px; }
   img { width: 100%; display: block; background: #111; }
-  .data { color: #ffd; font-size: 11px; padding: 4px 6px 8px; line-height: 1.4; }
+  .data { color: #ffd; font-size: 12px; padding: 3px 6px 6px; line-height: 1.3; }
   .data span { color: #999; }
   .data em { color: #f88; font-style: normal; }
 </style></head>

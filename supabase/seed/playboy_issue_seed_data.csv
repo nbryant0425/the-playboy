@@ -94,7 +94,7 @@ year,issue_period,display_label,cover_model,playmate_name,interview_subject,nota
 1961,September,September 1961,Barbara Ann Lawford,Christa Speck,,,verified
 1961,October,October 1961,"Vol. 8, No. 10",Jean Cannon,,,verified
 1961,November,November 1961,"Vol. 8, No. 11",Dianne Danford,,,verified
-1961,December,December 1961,Delores Wells,Lynn Karrol,,,verified
+1961,December,December 1961,Kathy Douglas,Lynn Karrol,,,verified
 1962,January,January 1962,"Heidi Becker, Susan Kelly, Connie Cooper, Christa Speck, Karen Thompson",Merle Pertile,,,verified
 1962,February,February 1962,Cynthia Maddox,Kari Knudsen,,,verified
 1962,March,March 1962,"Vol. 9, No. 3",Pamela Anne Gordon,,,verified
@@ -102,9 +102,9 @@ year,issue_period,display_label,cover_model,playmate_name,interview_subject,nota
 1962,May,May 1962,"Vol. 9, No. 5",Marya Carter,,,verified
 1962,June,June 1962,"Vol. 9, No. 6",Merissa Mathes,,,verified
 1962,July,July 1962,"Vol. 9, No. 7",Unne Terjesen,,,verified
-1962,August,August 1962,Darlene Higginson,Jan Roberts,,,verified
+1962,August,August 1962,Gesa Meiken,Jan Roberts,,,verified
 1962,September,September 1962,"Vol. 9, No. 9",Mickey Winters,Miles Davis,,verified
-1962,October,October 1962,Laura Young,Laura Young,Peter Sellers,,verified
+1962,October,October 1962,Bonnie Jo Halpin,Laura Young,Peter Sellers,,verified
 1962,November,November 1962,"Vol. 9, No. 11",Avis Kimble,,,verified
 1962,December,December 1962,Sheralee Conners,June Cochran,Jackie Gleason,,verified
 1963,January,January 1963,"Merle Pertile, Avis Kimble, Laura Young, Kari Knudsen, Marissa Mathes",Judi Monterey,,,verified
@@ -182,7 +182,7 @@ year,issue_period,display_label,cover_model,playmate_name,interview_subject,nota
 1969,January,January 1969,"Vol. 16, No. 1",Leslie Bianchini,Lee Marvin,,verified
 1969,February,February 1969,Nancy Chamberlain,Lorrie Menconi,Mort Sahl,,verified
 1969,March,March 1969,Penny James,Kathy MacDonald,Marshall McLuhan,,verified
-1969,April,April 1969,Sharon Kristie,Lorna Hopper,Allen Ginsberg,,verified
+1969,April,April 1969,Lorna Hopper,Lorna Hopper,Allen Ginsberg,,verified
 1969,May,May 1969,Paulette Lindberg,Sally Sheffield,Bill Cosby,,verified
 1969,June,June 1969,Connie Kreski,Helena Antonaccio,Gore Vidal,,verified
 1969,July,July 1969,Barbara Klein (Barbi Benton),Nancy McNeil,Rod Steiger,,verified
@@ -384,42 +384,42 @@ year,issue_period,display_label,cover_model,playmate_name,interview_subject,nota
 1985,November,November 1985,Teri Weigel,Pamela Saunders,Sting,"Don Johnson, Philip Michael Thomas",verified
 1985,December,December 1985,Barbi Benton,Carol Ficatier,Bill Cosby,Huey Lewis,verified
 1986,January,January 1986,"Vol. 33, No. 1",Sherry Arnett,Ruth Westheimer,,verified
-1986,February,February 1986,JoAnne Russell,Julie McCullough,Michael Douglas,,verified
-1986,March,March 1986,Janet Jones,Kim Morris,Sally Field,,verified
-1986,April,April 1986,Ava Fabian,Teri Weigel,Jeffrey MacDonald,,verified
-1986,May,May 1986,Vanna White,Christine Richters,Kathleen Turner,,verified
-1986,June,June 1986,Donna Edmondson,Rebecca Ferratti,Kareem Abdul-Jabbar,,verified
+1986,February,February 1986,Cherie Witter,Julie McCullough,Michael Douglas,,verified
+1986,March,March 1986,Sally Field,Kim Morris,Sally Field,,verified
+1986,April,April 1986,Shannon Tweed,Teri Weigel,Jeffrey MacDonald,,verified
+1986,May,May 1986,Kathleen Turner,Christine Richters,Kathleen Turner,,verified
+1986,June,June 1986,Kathy Shower,Rebecca Ferratti,Kareem Abdul-Jabbar,,verified
 1986,July,July 1986,Carrie Leigh,Lynne Austin,Arthur C. Clarke,,verified
-1986,August,August 1986,Paulina Porizkova,Ava Fabian,Jackie Gleason,,verified
-1986,September,September 1986,"Maryam d'Abo, Kim Basinger, Beth Hyatt, Timothy Dalton",Rebekka Armstrong,Carl Bernstein,,verified
-1986,October,October 1986,Brandi Brandt,Katherine Hushaw,Phil Collins,,verified
-1986,November,November 1986,Jessica Hahn,Donna Edmondson,Joan Rivers,,verified
-1986,December,December 1986,Brigitte Nielsen,Laurie Carr,Bryant Gumbel,,verified
+1986,August,August 1986,Lillian Müller,Ava Fabian,Jackie Gleason,,verified
+1986,September,September 1986,Julie McCullough,Rebekka Armstrong,Carl Bernstein,,verified
+1986,October,October 1986,Sharon Kaye,Katherine Hushaw,Phil Collins,,verified
+1986,November,November 1986,Devin DeVasquez,Donna Edmondson,Joan Rivers,,verified
+1986,December,December 1986,Brooke Shields,Laurie Carr,Bryant Gumbel,,verified
 1987,January,January 1987,"Vol. 34, No. 1",Luann Lee,Don Johnson,,verified
-1987,February,February 1987,,Julie Peterson,Mickey Rourke,Stephanie Beacham,needs-verification
+1987,February,February 1987,JoAnne Russell,Julie Peterson,Mickey Rourke,Stephanie Beacham,verified
 1987,March,March 1987,Janet Jones,Marina Baker,Lionel Richie,,verified
 1987,April,April 1987,Ava Fabian,Anna Clark,Louis Rukeyser,,verified
 1987,May,May 1987,Vanna White,Kymberly Paige,Prince Norodom Sihanouk,,verified
 1987,June,June 1987,Donna Edmondson,Sandy Greenberg,Whoopi Goldberg,,verified
 1987,July,July 1987,Sandy Greenberg,Carmen Berg,Wade Boggs,,verified
 1987,August,August 1987,Paulina Porizkova,Sharry Konopski,Imelda and Ferdinand Marcos,,verified
-1987,September,September 1987,Maryam d'Abo,Gwen Hajek,John Sculley,,verified
+1987,September,September 1987,"Maryam d'Abo, Kim Basinger, Beth Hyatt, Timothy Dalton",Gwen Hajek,John Sculley,,verified
 1987,October,October 1987,Brandi Brandt,Brandi Brandt,General Richard Secord,,verified
 1987,November,November 1987,Jessica Hahn,Pamela Stein,Daniel Ortega,,verified
-1987,December,December 1987,Jessica Hahn,India Allen,Gore Vidal,,verified
+1987,December,December 1987,Brigitte Nielsen,India Allen,Gore Vidal,,verified
 1988,January,January 1988,,Kimberley Conrad,Arnold Schwarzenegger,,verified
 1988,February,February 1988,Sandy Greenberg,Kari Kennell,Oliver Stone,,verified
-1988,March,March 1988,,Susie Owens,Billy Crystal,,needs-verification
-1988,April,April 1988,,Eloise Broady,Tom Clancy,,needs-verification
-1988,May,May 1988,,Diana Lee,Don King,,needs-verification
+1988,March,March 1988,Terri Lynn Doss,Susie Owens,Billy Crystal,,verified
+1988,April,April 1988,Vanity,Eloise Broady,Tom Clancy,,verified
+1988,May,May 1988,Laurie Carr,Diana Lee,Don King,,verified
 1988,June,June 1988,India Allen,Emily Arth,Chevy Chase,,verified
 1988,July,July 1988,Cindy Crawford,Terri Lynn Doss,Paul Hogan,,verified
 1988,August,August 1988,Kimberley Conrad,Helle Michaelsen,Harvey Fierstein,,verified
 1988,September,September 1988,Jessica Hahn,Laura Richmond,Yasser Arafat,,verified
-1988,October,October 1988,,Shannon Long,Roger Craig,,needs-verification
-1988,November,November 1988,,Pia Reyes,Bruce Willis,,needs-verification
+1988,October,October 1988,Terri Lynn Doss,Shannon Long,Roger Craig,,verified
+1988,November,November 1988,Laura Richmond,Pia Reyes,Bruce Willis,,verified
 1988,December,December 1988,Kata Kärkkäinen,Kata Kärkkäinen,Cher,,verified
-1989,January,January 1989,35th Anniversary Issue,Fawna MacLaren,Robert De Niro,,verified
+1989,January,January 1989,Marilyn Monroe,Fawna MacLaren,Robert De Niro,,verified
 1989,February,February 1989,Michele Smith,Simone Eden,Bob Woodward,,verified
 1989,March,March 1989,LaToya Jackson,Laurie Wood,Tom Hanks,,verified
 1989,April,April 1989,Erika Eleniak,Jennifer Jackson,The I.R.A.,,verified
@@ -457,7 +457,7 @@ year,issue_period,display_label,cover_model,playmate_name,interview_subject,nota
 1991,December,December 1991,Dian Parkinson,Wendy Hamilton,Carl Sagan,,verified
 1992,January,January 1992,Swedish Bikini Team,Suzi Simpson,Robin Williams,,verified
 1992,February,February 1992,Rachel Williams,Tanya Beyer,Liz Smith,,verified
-1992,March,March 1992,Anna Nicole Smith,Tylyn John,Lorne Michaels,,verified
+1992,March,March 1992,Vickie Smith,Tylyn John,Lorne Michaels,,verified
 1992,April,April 1992,Wendy Kaye,Cady Cantrell,Jonathan Kozol,,verified
 1992,May,May 1992,Elizabeth Gracen,Anna Nicole Smith,Michael Jordan,,verified
 1992,June,June 1992,Corinna Harney,Angela Melini,Ralph Nader,,verified
@@ -479,7 +479,7 @@ year,issue_period,display_label,cover_model,playmate_name,interview_subject,nota
 1993,October,October 1993,"Jerry Seinfeld, Echo Johnson, Barbara Moore, Kimberly Donley, Suzi Simpson, Carrie Westcott, Tylyn John, Cheryl Bachman, Alex Philip",Jenny McCarthy,Jerry Seinfeld,,verified
 1993,November,November 1993,"Marilise Porto, Lilian Porto, Renata Porto",Julianna Young,Joyce Carol Oates,,verified
 1993,December,December 1993,Erika Eleniak,Arlene Baxter,Rush Limbaugh,,verified
-1994,January,January 1994,Marilyn Monroe,Anna-Marie Goddard,David Letterman,,verified
+1994,January,January 1994,Fortieth Anniversary Issue,Anna-Marie Goddard,David Letterman,,verified
 1994,February,February 1994,Anna Nicole Smith,Julie Lynn Cialini,Pete Townshend,,verified
 1994,March,March 1994,Shannen Doherty,Neriah Davis,Anthony Hopkins,,verified
 1994,April,April 1994,Heidi Mark,Becky DelosSantos,Howard Stern,,verified
@@ -770,6 +770,6 @@ year,issue_period,display_label,cover_model,playmate_name,interview_subject,nota
 2019,Winter,Winter 2019,"Vol. 66, No. 1","Vendela Lindblom (January), Megan Moore (February), Miki Hamano (March)",Sam Harris,,verified
 2019,Spring,Spring 2019,Jesi Le Rae,"Fo Porter (April), Abigail O'Neill (May), Yoli Lara (June)",Seth Abramson,,verified
 2019,Summer,Summer 2019,"Vol. 66, No. 2","Teela LaRoux (July), Geena Rocero (August), Sophie O'Neil (September)",Tarana Burke,,verified
-2019,Fall,Fall 2019,"Arlondriah Lenyéa, Linnea Snyderman, Marisa Papen","Hilda Dias Pimentel (October), Gillian Chan (November), Jordy Murray (December)",Jeremy O. Harris,,verified
+2019,Fall,Fall 2019,Kylie Jenner,"Hilda Dias Pimentel (October), Gillian Chan (November), Jordy Murray (December)",Jeremy O. Harris,,verified
 2020,Winter,Winter 2020,Renee Tenison,"Riley Ticotin (January), Chasity Samone (February), Anita Pathammavong (March)",Christiane Amanpour,,verified
 2020,Spring,Spring 2020,Yoli Lara,"Marsha Elle (April), Savannah Smith (May), Alicia Olivas (June)",Jameela Jamil,,verified
